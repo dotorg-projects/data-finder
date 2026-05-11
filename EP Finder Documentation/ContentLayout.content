@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Topics>
+  <Topic id="Welcome" visible="True" isDefault="true" isSelected="true" />
+  <Topic id="VersionHistory" visible="True" isExpanded="true">
+    <Topic id="v1-0-0-0" visible="True" />
+  </Topic>
+</Topics>

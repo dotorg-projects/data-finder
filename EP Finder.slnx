@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="EP Finder Documentation/EP Finder Documentation.shfbproj" Type="7cf6df6d-3b04-46f8-a40b-537d21bca0b4" Id="b251c4cc-3454-445e-98a1-386c3fd051c7" />
+  <Project Path="EP Finder Test/EP Finder Test.csproj" />
+  <Project Path="EP Finder/EP Finder.csproj" />
+</Solution>

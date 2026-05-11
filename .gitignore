@@ -1,0 +1,12 @@
+# Build
+bin/
+obj/
+
+# User-specific
+*.user
+*.suo
+.vs/
+
+# NuGet
+packages/
+*.nupkg
