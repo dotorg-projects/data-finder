@@ -13,13 +13,13 @@
     <ProjectGuid>b251c4cc-3454-445e-98a1-386c3fd051c7</ProjectGuid>
     <SHFBSchemaVersion>2017.9.26.0</SHFBSchemaVersion>
     <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual Studio adds them anyway -->
-    <AssemblyName>EP_Finder_Documentation</AssemblyName>
-    <RootNamespace>EP_Finder_Documentation</RootNamespace>
-    <Name>EP_Finder_Documentation</Name>
+    <AssemblyName>DotOrgProjects.EntityPlatform.Finder.Help</AssemblyName>
+    <RootNamespace>DotOrgProjects.EntityPlatform.Finder.Help</RootNamespace>
+    <Name>EP_Finder_Help</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Core/.NET Standard/.NET 5.0+</FrameworkVersion>
     <OutputPath>Help\</OutputPath>
-    <HtmlHelpName>EP_Finder_Documentation</HtmlHelpName>
+    <HtmlHelpName>EP_Finder_Help</HtmlHelpName>
     <Language>en-US</Language>
     <TransformComponentArguments>
       <Argument Key="RobotsMetadata" Value="" />
@@ -28,8 +28,8 @@
       <Argument Key="ResizableTocColumn" Value="False" />
       <Argument Key="CollapsibleSections" Value="True" />
       <Argument Key="LogoFile" Value="ep-finder-logo.png" />
-      <Argument Key="LogoHeight" Value="" />
-      <Argument Key="LogoWidth" Value="" />
+      <Argument Key="LogoHeight" Value="50" />
+      <Argument Key="LogoWidth" Value="50" />
       <Argument Key="LogoAltText" Value="EP Finder" />
       <Argument Key="LogoPlacement" Value="left" />
       <Argument Key="LogoAlignment" Value="left" />
@@ -41,8 +41,8 @@
       <Argument Key="FlagsEnumValueFormat" Value="IntegerValue" />
       <Argument Key="FlagsEnumSeparatorSize" Value="0" />
       <Argument Key="IncludeIntegerEnumSeparators" Value="true" />
-      <Argument Key="BaseSourceCodeUrl" Value="https://github.com/dotorg-projects/data-finder/blob/main/" />
-      <Argument Key="RequestExampleUrl" Value="" />
+      <Argument Key="BaseSourceCodeUrl" Value="https://github.com/dotorg-projects/data-finder/" />
+      <Argument Key="RequestExampleUrl" Value="https://github.com/dotorg-projects/data-finder/issues" />
       <Argument Key="ShowParametersOnAllMethods" Value="False" />
       <Argument Key="AlwaysShowTopLevelAutoOutline" Value="False" />
     </TransformComponentArguments>
@@ -60,7 +60,7 @@
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <HelpTitle>Entity Platform: Finder</HelpTitle>
-    <HelpFileVersion>1.0.0.0</HelpFileVersion>
+    <HelpFileVersion>1.0.0</HelpFileVersion>
     <NamingMethod>Guid</NamingMethod>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <RootNamespaceContainer>True</RootNamespaceContainer>
@@ -75,17 +75,20 @@
 For questions or feedback, contact us at &amp;lt%3ba href=&amp;quot%3bmailto:dotorg-projects%40groups.outlook.com&amp;quot%3b&amp;gt%3b.ORG Projects Group&amp;lt%3b/a&amp;gt%3b.</ProjectSummary>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="False" />
-<NamespaceSummaryItem name="DotOrgProjects.EntityPlatform.Finder" isDocumented="True">Provides automatic entity discovery for Entity Framework Core via assembly and namespace scanning.</NamespaceSummaryItem></NamespaceSummaries>
+      <NamespaceSummaryItem name="DotOrgProjects.EntityPlatform.Finder" isDocumented="True">Provides automatic entity discovery for Entity Framework Core via assembly and namespace scanning.</NamespaceSummaryItem>
+    </NamespaceSummaries>
     <SourceCodeBasePath>..\</SourceCodeBasePath>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <PlugInConfigurations>
       <PlugInConfig id="Version Builder" enabled="True" xmlns="">
         <configuration>
-  <currentProject label=".NET" version="1.0.0" ripOldApis="true" />
-  <versions />
-</configuration>
+          <currentProject label=".NET" version="1.0.0" ripOldApis="true" />
+          <versions />
+        </configuration>
       </PlugInConfig>
     </PlugInConfigurations>
+    <VisibleItems>Attributes, ExplicitInterfaceImplementations, InheritedMembers, InheritedFrameworkMembers, InheritedFrameworkInternalMembers, InheritedFrameworkPrivateMembers, Internals, Privates, PrivateFields, Protected, SealedProtected, NoPIATypes, PublicCompilerGenerated, EditorBrowsableNever, NonBrowsable, InternalAndPrivateIfExternal</VisibleItems>
+    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
@@ -110,17 +113,16 @@ For questions or feedback, contact us at &amp;lt%3ba href=&amp;quot%3bmailto:dot
     <Folder Include="Content\VersionHistory" />
     <Folder Include="icons" />
     <Folder Include="media" />
+    <Folder Include="css" />
+    <Folder Include="scripts" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\VersionHistory\v1.0.0.0.md" />
+    <None Include="Content\VersionHistory\v1.0.0.md" />
     <None Include="Content\VersionHistory\VersionHistory.md" />
     <None Include="Content\Welcome.md" />
   </ItemGroup>
   <ItemGroup>
     <ContentLayout Include="ContentLayout.content" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="icons\Help.png" />
   </ItemGroup>
   <!-- Import the common build targets during NuGet restore because before the packages are being installed, $(SHFBROOT) is not set yet -->
   <ItemGroup>
@@ -128,6 +130,11 @@ For questions or feedback, contact us at &amp;lt%3ba href=&amp;quot%3bmailto:dot
       <ImageId>ep-finder-logo</ImageId>
       <AlternateText>ep-finder-logo</AlternateText>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\presentationStyle.css" />
+    <Content Include="icons\ep-finder-logo.png" />
+    <Content Include="scripts\presentationStyle.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="'$(MSBuildRestoreSessionId)' != ''" />
   <!-- Import the SHFB build targets during build -->
@@ -138,6 +145,10 @@ For questions or feedback, contact us at &amp;lt%3ba href=&amp;quot%3bmailto:dot
     <PreBuildEvent>
     </PreBuildEvent>
     <PostBuildEvent>
+        del "$(ProjectDir)Help\SearchHelp.aspx"
+        del "$(ProjectDir)Help\SearchHelp.php"
+        del "$(ProjectDir)Help\SearchHelp.inc.php"
+        del "$(ProjectDir)Help\Web.config"
     </PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>

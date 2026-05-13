@@ -10,6 +10,10 @@ namespace DotOrgProjects.EntityPlatform.Finder
     /// <summary>
     /// Provides extension methods on <see cref="DbContextOptionsBuilder"/> to configure EP Finder.
     /// </summary>
+    /// <remarks>
+    /// This class is the primary entry point for configuring EP Finder.
+    /// Use <see cref="UseFinderIn"/> when registering <see cref="DbFoundContext"/> via dependency injection.
+    /// </remarks>
     public static class DbFinderContextOptionsExtensionMethods
     {
 
@@ -21,10 +25,16 @@ namespace DotOrgProjects.EntityPlatform.Finder
         /// <param name="assemblyName">The name of the assembly to scan for entity types.</param>
         /// <param name="rootNamespace">The root namespace within the assembly to scan.</param>
         /// <returns>The same <see cref="DbContextOptionsBuilder"/> instance to allow further configuration chaining.</returns>
+        /// <remarks>
+        /// Registers a <see cref="DbFinderContextOptionsExtension"/> into the <paramref name="optionsBuilder"/>,
+        /// which in turn registers <see cref="DbSetFinder"/> into EF Core's internal service provider
+        /// via <see cref="DbFinderContextOptionsExtension.ApplyServices"/>.
+        /// </remarks>
         public static DbContextOptionsBuilder UseFinderIn(
             this DbContextOptionsBuilder optionsBuilder,
             string assemblyName,
-            string rootNamespace)
+            string rootNamespace
+        )
         {
 
             ((IDbContextOptionsBuilderInfrastructure)optionsBuilder).AddOrUpdateExtension(

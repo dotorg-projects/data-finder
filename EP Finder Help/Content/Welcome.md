@@ -1,3 +1,9 @@
+---
+uid: Welcome
+title: Welcome to EP Finder
+keywords: Welcome, EP Finder, Entity Platform, EF Core
+---
+
 # EP Finder — Entity Platform Finder
 
 EP Finder is a module of the **Entity Platform (EP)** team of [.ORG Projects](https://github.com/dotorg-projects), designed to eliminate the need to manually declare `DbContext` and its `DbSet<T>` properties in applications that use Entity Framework Core.
@@ -6,15 +12,11 @@ EP Finder scans an assembly and root namespace looking for classes annotated wit
 
 > **Note:** EP Finder only works with entities configured via Data Attributes. Fluent API is not supported and there are no plans to support it.
 
----
-
 ## Installation
 
 ```
 dotnet add package DotOrgProjects.EntityPlatform.Finder
 ```
-
----
 
 ## Usage
 
@@ -45,24 +47,7 @@ namespace MyApp {
 
 The developer always works with `Microsoft.EntityFrameworkCore.DbContext` — the internal classes of EP Finder are never referenced directly.
 
----
+## See Also
 
-## How It Works
-
-`DbSetFinder` replaces EF Core's internal `IDbSetFinder` via `ReplaceService<IDbSetFinder, DbSetFinder>()`. Instead of looking for `DbSet<T>` properties declared in the `DbContext`, it scans the assembly and root namespace configured in `DbFinderContextOptionsExtension` looking for classes annotated with `[Table]` and registers them as model entities.
-
-EF Core guarantees that `OnConfiguring` always runs regardless of how the `DbFoundContext` instance is created, so `DbSetFinder` is always correctly registered.
-
-> **Warning:** `IDbSetFinder` is an internal EF Core API subject to changes between versions without prior notice. It has not changed between EF Core 8, 9, and 10.
-
----
-
-## Migrations
-
-EF Core discovers `DbFoundContext` at design time through DI — when running the app startup it finds `DbFoundContext` registered with `AddDbContext<DbFoundContext>()` and uses it to generate migrations. No additional design time class is required.
-
----
-
-## License
-
-EP Finder is licensed under the [Microsoft Public License (Ms-PL)](LICENSE.txt).
+**Other Resources**  
+[](@VersionHistory)

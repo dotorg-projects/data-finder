@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <MSTest>
+    <Parallelize>
+      <Scope>MethodLevel</Scope>
+    </Parallelize>
+  </MSTest>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="Code Coverage">
+        <Configuration>
+          <CodeCoverage>
+            <IncludeTestAssembly>false</IncludeTestAssembly>
+            <ModulePaths>
+              <Exclude>
+                <ModulePath>.*Tests.*</ModulePath>
+              </Exclude>
+            </ModulePaths>
+          </CodeCoverage>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>

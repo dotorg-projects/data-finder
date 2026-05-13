@@ -1,0 +1,919 @@
+﻿/* ===============================================================================================================
+   System  : EP Finder Help
+   File    : presentationStyle.css
+   Note    : Copyright 2025 .ORG Projects, Licensed under Ms-PL
+
+   Customized from Sandcastle Help File Builder Default2022 presentation style.
+   Applies .ORG Projects branding and light/dark mode support.
+   =============================================================================================================== */
+
+/* Import Open Sans from Bunny Fonts (.ORG Projects typography) */
+@import url('https://fonts.bunny.net/css?family=open-sans:400,600,700&display=swap');
+
+/* ===============================================================================================================
+   CSS Custom Properties — Light Mode (default)
+   =============================================================================================================== */
+:root {
+    --org-green-primary: #1A5C38;
+    --org-green-accent: #4ECB71;
+    --org-white: #FFFFFF;
+    --color-background: #FFFFFF;
+    --color-surface: #F5F5F5;
+    --color-border: #E6E6E6;
+    --color-text: #333333;
+    --color-text-muted: #666666;
+    --color-header-bg: #0F3D25;
+    --color-header-text: #FFFFFF;
+    --color-link: #1A5C38;
+    --color-link-hover: #4ECB71;
+    --color-active: #4ECB71;
+    --color-code-bg: #F4F4F4;
+    --color-code-text: #000066;
+    --color-keyword: #0000FF;
+    --color-literal: #CC0000;
+    --color-table-header: #E6F4EC;
+    --color-table-row: #FFFFFF;
+    --color-table-row-alt: #FAFAFA;
+    --color-toc-hover: #E6F4EC;
+    --color-toc-text: #333333;
+    --color-resizer: #E6E6E6;
+    --color-codeheader-bg: #E6E6E6;
+    --color-codeheader-text: #171717;
+    --color-footer-bg: #F5F5F5;
+    --color-footer-text: #666666;
+    --color-footer-border: #E6E6E6;
+    --color-input-bg: #FFFFFF;
+    --color-input-text: #333333;
+    --color-input-border: #B5B5B5;
+    --color-input-placeholder: #AAAAAA;
+    --color-heading: #1A1A1A;
+    --color-select-bg: #FFFFFF;
+    --color-select-text: #333333;
+    --color-select-border: #B5B5B5;
+    --color-dropdown-bg: #FFFFFF;
+    --color-dropdown-item: #1A5C38;
+    --color-dropdown-hover: #E6F4EC;
+    --color-toggle-bg: rgba(255,255,255,0.15);
+    --color-toggle-icon: #FFFFFF;
+    --color-hljs-type: #4EC9B0;
+    --color-hljs-comment: #6A9955;
+    --color-hljs-number: #B5CEA8;
+    --color-menu-label: #7A7A7A;
+}
+
+/* ===============================================================================================================
+   CSS Custom Properties — Dark Mode (auto from system)
+   =============================================================================================================== */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --color-background: #1A1A1A;
+        --color-surface: #242424;
+        --color-border: #333333;
+        --color-text: #D0D0D0;
+        --color-text-muted: #999999;
+        --color-header-bg: #0F3D25;
+        --color-header-text: #FFFFFF;
+        --color-link: #4ECB71;
+        --color-link-hover: #7EDDA0;
+        --color-active: #4ECB71;
+        --color-code-bg: #2D2D2D;
+        --color-code-text: #A0C4FF;
+        --color-keyword: #7EC8E3;
+        --color-literal: #FF8080;
+        --color-table-header: #1E3D2A;
+        --color-table-row: #1A1A1A;
+        --color-table-row-alt: #222222;
+        --color-toc-hover: #1E3D2A;
+        --color-toc-text: #D0D0D0;
+        --color-resizer: #333333;
+        --color-codeheader-bg: #2D2D2D;
+        --color-codeheader-text: #D0D0D0;
+        --color-footer-bg: #141414;
+        --color-footer-text: #999999;
+        --color-footer-border: #333333;
+        --color-input-bg: #2D2D2D;
+        --color-input-text: #D0D0D0;
+        --color-input-border: #444444;
+        --color-input-placeholder: #777777;
+        --color-heading: #EEEEEE;
+        --color-select-bg: #2D2D2D;
+        --color-select-text: #D0D0D0;
+        --color-select-border: #444444;
+        --color-dropdown-bg: #2D2D2D;
+        --color-dropdown-item: #D0D0D0;
+        --color-dropdown-hover: #1E3D2A;
+        --color-hljs-type: #4EC9B0;
+        --color-hljs-comment: #6A9955;
+        --color-hljs-number: #B5CEA8;
+        --color-menu-label: #FFFFFF;
+    }
+}
+
+[data-theme="dark"] {
+    --color-background: #1A1A1A;
+    --color-surface: #242424;
+    --color-border: #333333;
+    --color-text: #D0D0D0;
+    --color-text-muted: #999999;
+    --color-header-bg: #0F3D25;
+    --color-header-text: #FFFFFF;
+    --color-link: #4ECB71;
+    --color-link-hover: #7EDDA0;
+    --color-active: #4ECB71;
+    --color-code-bg: #2D2D2D;
+    --color-code-text: #A0C4FF;
+    --color-keyword: #7EC8E3;
+    --color-literal: #FF8080;
+    --color-table-header: #1E3D2A;
+    --color-table-row: #1A1A1A;
+    --color-table-row-alt: #222222;
+    --color-toc-hover: #1E3D2A;
+    --color-toc-text: #D0D0D0;
+    --color-resizer: #333333;
+    --color-codeheader-bg: #2D2D2D;
+    --color-codeheader-text: #D0D0D0;
+    --color-footer-bg: #141414;
+    --color-footer-text: #999999;
+    --color-footer-border: #333333;
+    --color-input-bg: #2D2D2D;
+    --color-input-text: #D0D0D0;
+    --color-input-border: #444444;
+    --color-input-placeholder: #777777;
+    --color-heading: #EEEEEE;
+    --color-select-bg: #2D2D2D;
+    --color-select-text: #D0D0D0;
+    --color-select-border: #444444;
+    --color-dropdown-bg: #2D2D2D;
+    --color-dropdown-item: #D0D0D0;
+    --color-dropdown-hover: #1E3D2A;
+    --color-hljs-type: #4EC9B0;
+    --color-hljs-comment: #6A9955;
+    --color-hljs-number: #B5CEA8;
+    --color-menu-label: #FFFFFF;
+}
+
+/* ===============================================================================================================
+   CSS Custom Properties — Light Mode (manual toggle override)
+   =============================================================================================================== */
+[data-theme="light"] {
+    --color-background: #FFFFFF;
+    --color-surface: #F5F5F5;
+    --color-border: #E6E6E6;
+    --color-text: #333333;
+    --color-text-muted: #666666;
+    --color-header-bg: #0F3D25;
+    --color-header-text: #FFFFFF;
+    --color-link: #1A5C38;
+    --color-link-hover: #4ECB71;
+    --color-active: #4ECB71;
+    --color-code-bg: #F4F4F4;
+    --color-code-text: #000066;
+    --color-keyword: #0000FF;
+    --color-literal: #CC0000;
+    --color-table-header: #E6F4EC;
+    --color-table-row: #FFFFFF;
+    --color-table-row-alt: #FAFAFA;
+    --color-toc-hover: #E6F4EC;
+    --color-toc-text: #333333;
+    --color-resizer: #E6E6E6;
+    --color-codeheader-bg: #E6E6E6;
+    --color-codeheader-text: #171717;
+    --color-footer-bg: #F5F5F5;
+    --color-footer-text: #666666;
+    --color-footer-border: #E6E6E6;
+    --color-input-bg: #FFFFFF;
+    --color-input-text: #333333;
+    --color-input-border: #B5B5B5;
+    --color-input-placeholder: #AAAAAA;
+    --color-heading: #1A1A1A;
+    --color-select-bg: #FFFFFF;
+    --color-select-text: #333333;
+    --color-select-border: #B5B5B5;
+    --color-dropdown-bg: #FFFFFF;
+    --color-dropdown-item: #333333;
+    --color-dropdown-hover: #F5F5F5;
+}
+
+/* ===============================================================================================================
+   Base — Typography and Body
+   =============================================================================================================== */
+html {
+    background-color: var(--color-background);
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+/* ===============================================================================================================
+   Headings
+   =============================================================================================================== */
+h1, h2, h3, h4, h5, h6,
+.title, .subtitle,
+.content h1, .content h2, .content h3,
+.content h4, .content h5, .content h6 {
+    color: var(--color-heading);
+}
+
+/* ===============================================================================================================
+   Print styles
+   =============================================================================================================== */
+@media print {
+    #ShowHideTOCColumn, #TOCColumn, #InThisArticleColumn {
+        display: none;
+    }
+
+    #TopicContent {
+        flex: none;
+        width: 100%;
+    }
+}
+
+/* ===============================================================================================================
+   Layout utilities
+   =============================================================================================================== */
+.sticky {
+    position: sticky;
+    top: 10px;
+}
+
+.border-top {
+    border-block-start: 1px solid var(--color-border);
+}
+
+.border-bottom {
+    border-block-end: 1px solid var(--color-border);
+    padding-bottom: 10px;
+}
+
+div.is-centered {
+    display: flex;
+    justify-content: center;
+}
+
+/* ===============================================================================================================
+   Page Header — .ORG Projects branding
+   =============================================================================================================== */
+.pageHeader {
+    background-color: var(--color-header-bg) !important;
+    color: var(--color-header-text);
+}
+
+    .pageHeader a,
+    .pageHeader .navbar-item,
+    #DocumentationTitle {
+        color: var(--color-header-text);
+    }
+
+        .pageHeader a:hover {
+            color: var(--color-active);
+            text-decoration: none;
+        }
+
+/* ===============================================================================================================
+   Language Selector (C# dropdown in Header)
+   =============================================================================================================== */
+.dropdown-menu {
+    background-color: var(--color-dropdown-bg) !important;
+    border: 1px solid var(--color-border) !important;
+}
+
+.dropdown-content {
+    background-color: var(--color-dropdown-bg) !important;
+    border: 1px solid var(--color-border) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+}
+
+.dropdown-item,
+a.dropdown-item {
+    background-color: var(--color-dropdown-bg) !important;
+    color: var(--color-dropdown-item) !important;
+}
+
+    .dropdown-item:hover,
+    a.dropdown-item:hover {
+        background-color: var(--color-toc-hover) !important;
+        color: var(--color-link-hover) !important;
+    }
+
+.pageHeader .button {
+    background-color: rgba(255,255,255,0.15);
+    color: var(--color-header-text);
+    border-color: rgba(255,255,255,0.3);
+}
+
+    .pageHeader .button:hover {
+        background-color: rgba(255,255,255,0.25);
+    }
+
+/* ===============================================================================================================
+   Search Box
+   =============================================================================================================== */
+.input,
+input[type="text"],
+input[type="search"] {
+    background-color: var(--color-input-bg);
+    color: var(--color-input-text);
+    border-color: var(--color-input-border);
+}
+
+    .input::placeholder,
+    input[type="text"]::placeholder,
+    input[type="search"]::placeholder {
+        color: var(--color-input-placeholder);
+    }
+
+    .input:focus,
+    input[type="text"]:focus,
+    input[type="search"]:focus {
+        border-color: var(--color-active);
+        box-shadow: 0 0 0 2px rgba(78, 203, 113, 0.25);
+    }
+
+.pageHeader .input,
+.pageHeader input[type="text"],
+.pageHeader input[type="search"] {
+    background-color: rgba(255,255,255,0.15);
+    color: var(--color-header-text);
+    border-color: rgba(255,255,255,0.3);
+}
+
+    .pageHeader .input::placeholder {
+        color: rgba(255,255,255,0.6);
+    }
+
+/* ===============================================================================================================
+   Footer
+   =============================================================================================================== */
+.footer {
+    background-color: var(--color-footer-bg);
+    color: var(--color-footer-text);
+    border-top: 1px solid var(--color-footer-border);
+}
+
+    .footer a {
+        color: var(--color-link);
+    }
+
+        .footer a:hover {
+            color: var(--color-link-hover);
+            text-decoration: underline;
+        }
+
+/* ===============================================================================================================
+   Quick Links
+   =============================================================================================================== */
+.is-active-quickLink {
+    border-left: 5px solid var(--color-active);
+}
+
+/* ===============================================================================================================
+   Content — General
+   =============================================================================================================== */
+.content div#Notes + h2:not(:first-child) {
+    margin-top: 5px;
+}
+
+.noTitle {
+    margin-top: 1em;
+}
+
+.breadcrumb p {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 0 0.75em;
+}
+
+.breadcrumb,
+.breadcrumb li,
+.breadcrumb a {
+    color: var(--color-text-muted);
+}
+
+    .content a,
+    .breadcrumb a {
+        color: var(--color-link);
+    }
+
+        .content a:hover,
+        .footer a:hover,
+        .breadcrumb a:hover {
+            color: var(--color-link-hover);
+            text-decoration: underline;
+        }
+
+.content table {
+    border: 1px solid var(--color-border);
+}
+
+.content h4, .content h5, .content h6 {
+    margin-top: 0.8em;
+    margin-bottom: .5em;
+}
+
+.content #seeAlsoSection h4 {
+    margin-bottom: 0;
+}
+
+.content hr {
+    background-color: var(--color-border);
+}
+
+.content div.caption {
+    font-style: italic;
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+}
+
+.content dt {
+    font-weight: 600;
+}
+
+.content dd {
+    margin-bottom: 1em;
+}
+
+.content q {
+    font-style: italic;
+}
+
+/* ===============================================================================================================
+   Content — Media
+   =============================================================================================================== */
+.content .mediaInline {
+    padding-left: .25em;
+    padding-right: .25em;
+    vertical-align: top;
+}
+
+.content .mediaNear {
+    text-align: left;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.content .mediaCenter {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.content .mediaFar {
+    text-align: right;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+/* ===============================================================================================================
+   Content — Inline Code
+   =============================================================================================================== */
+code, .content span.code, span.command, span.parameter {
+    font-family: Consolas, Courier, monospace;
+    font-size: 1em;
+    color: var(--color-code-text);
+    background-color: var(--color-code-bg);
+    padding: 0;
+}
+
+.content span.selflink {
+    font-family: Consolas, Courier, monospace;
+    color: var(--color-code-text);
+}
+
+span.keyword {
+    font-family: Consolas, Courier, monospace;
+    color: var(--color-keyword);
+}
+
+.content span.literal {
+    color: var(--color-literal);
+}
+
+/* ===============================================================================================================
+   Content — Lists
+   =============================================================================================================== */
+.content ul.noBullet {
+    list-style-type: none;
+    margin-left: 1em;
+}
+
+.content ul ul.noBullet {
+    list-style-type: none;
+    margin-left: 1em;
+}
+
+.content ul ul ul.noBullet {
+    list-style-type: none;
+    margin-left: 1em;
+}
+
+.content li ul {
+    margin-bottom: 1em;
+}
+
+/* ===============================================================================================================
+   Content — Tables
+   =============================================================================================================== */
+.content thead th {
+    background-color: var(--color-table-header);
+    color: var(--color-heading);
+    text-align: left;
+}
+
+.content tbody tr {
+    background-color: var(--color-table-row);
+    color: var(--color-text);
+}
+
+    .content tbody tr:nth-child(even) {
+        background-color: var(--color-table-row-alt);
+    }
+
+.content td, .content th {
+    border-color: var(--color-border);
+    color: var(--color-text);
+}
+
+.content tbody tr:hover {
+    background-color: var(--color-toc-hover) !important;
+    color: var(--color-text);
+}
+
+/* ===============================================================================================================
+   Missing documentation
+   =============================================================================================================== */
+.missing {
+    color: #dc143c;
+    font-weight: bold;
+}
+
+/* ===============================================================================================================
+   Inheritance hierarchy
+   =============================================================================================================== */
+.inheritanceHierarchy, .implementsList {
+    display: flex;
+    margin-bottom: 1em;
+}
+
+    .inheritanceHierarchy dd, .implementsList dd {
+        margin-left: 1em;
+        margin-bottom: 0;
+    }
+
+/* ===============================================================================================================
+   Code block styles
+   =============================================================================================================== */
+.codeHeader {
+    background-color: var(--color-codeheader-bg);
+    box-sizing: content-box;
+    color: var(--color-codeheader-text);
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    padding-right: 0.2em;
+}
+
+    .codeHeader a:hover {
+        text-decoration: none;
+    }
+
+    .codeHeader .button {
+        padding-top: 0.1em;
+        padding-bottom: 0.1em;
+        background-color: var(--color-surface);
+        color: var(--color-text);
+        border-color: var(--color-border);
+    }
+
+.codeHeaderTitle {
+    font-weight: 600;
+    margin: .3em;
+    margin-left: 1em;
+    flex-grow: 2;
+    color: var(--color-codeheader-text);
+}
+
+.codePanel {
+    border: 1px solid var(--color-border);
+    background-color: var(--color-code-bg);
+    padding: 1em;
+    margin-bottom: 1em;
+    flex: 1;
+}
+
+    .codePanel pre {
+        padding: 0em;
+        line-height: 1.37;
+        color: var(--color-text);
+        background-color: var(--color-code-bg);
+    }
+
+    .codePanel code {
+        background-color: transparent;
+        color: var(--color-code-text);
+    }
+
+pre {
+    background-color: var(--color-code-bg);
+    color: var(--color-text);
+}
+
+.codeWithNumbers {
+    display: flex;
+}
+
+    .codeWithNumbers .lineNumbers {
+        border: 1px solid var(--color-border);
+        flex-shrink: 1;
+        text-align: right;
+        margin-bottom: 1em;
+        background-color: var(--color-surface);
+        color: var(--color-text-muted);
+    }
+
+        .codeWithNumbers .lineNumbers pre {
+            background: transparent;
+            padding-left: 0.50em;
+            padding-right: 0.50em;
+            line-height: 1.37;
+        }
+
+    .codeWithNumbers .numbered {
+        flex: 1;
+        overflow-x: auto;
+    }
+
+/* ===============================================================================================================
+   Glossary styles
+   =============================================================================================================== */
+h3.glossaryGroupHeading {
+    color: var(--color-text-muted);
+}
+
+dl.glossaryGroupList {
+    margin: 0;
+    color: var(--color-text);
+}
+
+dt.glossaryEntry {
+    margin-left: 2em;
+}
+
+dd.glossaryEntry {
+    margin-left: 2em;
+    margin-bottom: 2em;
+}
+
+div.relatedEntry {
+    margin-bottom: 4px;
+}
+
+/* ===============================================================================================================
+   Bibliography styles
+   =============================================================================================================== */
+span.bibliographyAuthor {
+    font-weight: bold;
+}
+
+span.bibliographyTitle {
+    font-style: italic;
+}
+
+sup.citation a:link a:visited a:active {
+    text-decoration: none;
+}
+
+/* ===============================================================================================================
+   Expand/collapse toggles
+   =============================================================================================================== */
+.toggle {
+    transition: transform .35s ease;
+    transform-origin: center;
+    cursor: pointer;
+}
+
+.toggleSection {
+    transition: transform .35s ease;
+    transform-origin: center;
+    margin-right: 0.25em;
+    cursor: pointer;
+}
+
+.toggleExpanded {
+    transform: rotate(90deg);
+}
+
+.toggleCollapsed {
+    transform: rotate(-90deg);
+}
+
+/* ===============================================================================================================
+   Table of contents styles
+   =============================================================================================================== */
+.toc {
+    font-size: 1rem;
+}
+
+.toc-menu {
+    line-height: 2em;
+}
+
+    .toc-menu a {
+        border-radius: 2px;
+        color: var(--color-toc-text);
+        display: block;
+        padding-left: 0.75em;
+    }
+
+        .toc-menu a:hover {
+            background-color: var(--color-toc-hover);
+            color: var(--color-link-hover);
+        }
+
+        .toc-menu a.is-active {
+            font-weight: bold;
+            color: var(--color-active);
+        }
+
+    .toc-menu li ul {
+        padding-left: 1em;
+    }
+
+    .toc-menu li a.has-submenu {
+        margin-left: -1.75em;
+    }
+
+/* ===============================================================================================================
+   Resizable TOC styles
+   =============================================================================================================== */
+.toc-resizable {
+    flex-basis: initial;
+    flex-grow: 0.25;
+}
+
+.toc-resizer {
+    cursor: ew-resize;
+    width: 5px;
+    background: var(--color-resizer);
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+
+.toc-resizable-content {
+    flex-grow: 1;
+}
+
+/* ===============================================================================================================
+   Section and content area backgrounds
+   =============================================================================================================== */
+.section,
+#MainSection,
+#TOCColumn,
+#InThisArticleColumn,
+.columns,
+.column {
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+/* ===============================================================================================================
+   Highlight.js override — prevent hljs from overriding our theme colors
+   =============================================================================================================== */
+.hljs {
+    background: var(--color-code-bg) !important;
+    color: var(--color-text) !important;
+}
+
+.codePanel.hljs,
+.codePanel .hljs {
+    background: var(--color-code-bg) !important;
+    color: var(--color-text) !important;
+}
+
+/* Syntax highlighting — VS Dark Theme colors */
+.hljs-keyword,
+span.hljs-keyword,
+span.keyword {
+    color: var(--color-keyword) !important;
+    font-weight: normal;
+}
+
+.hljs-title,
+span.hljs-title,
+.hljs-title.class_,
+.hljs-type,
+span.hljs-type {
+    color: var(--color-hljs-type) !important;
+}
+
+.hljs-string,
+span.hljs-string,
+span.literal {
+    color: var(--color-literal) !important;
+}
+
+.hljs-comment,
+span.hljs-comment {
+    color: var(--color-hljs-comment) !important;
+    font-style: italic;
+}
+
+.hljs-number,
+span.hljs-number,
+.hljs-literal {
+    color: var(--color-hljs-number) !important;
+}
+
+.hljs-built_in,
+span.hljs-built_in {
+    color: var(--color-hljs-type) !important;
+}
+
+.hljs-params,
+.hljs-variable {
+    color: var(--color-text);
+}
+
+/* ===============================================================================================================
+   In This Article — quick links panel
+   =============================================================================================================== */
+#InThisArticleColumn,
+#InThisArticleMenu {
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+    #InThisArticleColumn p.menuToggle,
+    #InThisArticleColumn > p,
+    #InThisArticleMenu > p,
+    .menu-label {
+        color: var(--color-menu-label) !important;
+        font-weight: 700;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+        .menu-label strong {
+            color: var(--color-menu-label) !important;
+        }
+
+    #InThisArticleMenu p,
+    #InThisArticleMenu span,
+    #InThisArticleMenu a {
+        color: var(--color-text-muted);
+    }
+
+        #InThisArticleMenu a:hover {
+            color: var(--color-link-hover);
+        }
+
+.quickLink {
+    color: var(--color-text-muted);
+    background-color: transparent;
+    display: block;
+    padding: 0.2em 0.5em;
+    border-radius: 2px;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+    .quickLink:hover {
+        color: var(--color-link-hover);
+        background-color: var(--color-toc-hover) !important;
+    }
+
+.is-active-quickLink {
+    border-left: 4px solid var(--org-green-accent);
+    color: var(--org-green-accent) !important;
+    background-color: var(--color-toc-hover) !important;
+    font-weight: 600;
+}
+
+/* ===============================================================================================================
+   Theme Toggle Button — icon and positioning
+   =============================================================================================================== */
+#ThemeToggle {
+    background: var(--color-toggle-bg);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 4px;
+    color: var(--color-toggle-icon);
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    width: 2.2em;
+    height: 2.2em;
+    padding: 0;
+    margin-left: 0.5em;
+    transition: background 0.2s ease;
+    vertical-align: middle;
+    text-align: center;
+}
+
+    #ThemeToggle:hover {
+        background: rgba(255,255,255,0.25);
+    }

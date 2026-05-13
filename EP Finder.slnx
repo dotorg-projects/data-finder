@@ -1,5 +1,12 @@
 <Solution>
-  <Project Path="EP Finder Documentation/EP Finder Documentation.shfbproj" Type="7cf6df6d-3b04-46f8-a40b-537d21bca0b4" Id="b251c4cc-3454-445e-98a1-386c3fd051c7" />
+  <Folder Name="/Elementos de la solución/">
+    <File Path=".gitignore" />
+    <File Path="LICENSE.txt" />
+    <File Path="README.md" />
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Project Path="EP Finder Help/EP Finder Help.shfbproj" Type="7cf6df6d-3b04-46f8-a40b-537d21bca0b4" Id="b251c4cc-3454-445e-98a1-386c3fd051c7" />
+  <Project Path="EP Finder Sample/EP Finder Sample.csproj" Id="2c65bffb-c715-46b3-ba2e-839c027726e3" />
   <Project Path="EP Finder Test/EP Finder Test.csproj" />
   <Project Path="EP Finder/EP Finder.csproj" />
 </Solution>

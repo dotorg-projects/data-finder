@@ -7,23 +7,17 @@
     <Nullable>enable</Nullable>
     <AssemblyName>DotOrgProjects.EntityPlatform.Finder</AssemblyName>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <ApplicationIcon>Resources\ep-finder-logo.ico</ApplicationIcon>
     <SignAssembly>False</SignAssembly>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>DotOrgProjects.EntityPlatform.Finder</PackageId>
+    <Version>1.0.0</Version>
     <Title>EP Finder</Title>
-    <Authors>$(Authors)</Authors>
-    <Copyright>.ORG PRojects</Copyright>
+    <Description>EP Finder is an Entity Platform module that eliminates the need to manually declare DbSet&lt;T&gt; properties in EF Core by automatically discovering entity types annotated with [Table] from a configured assembly and namespace.</Description>
+    <PackageProjectUrl>https://github.com/dotorg-projects/ep-finder</PackageProjectUrl>
     <PackageIcon>ep-finder-logo.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/dotorg-projects/data-finder</RepositoryUrl>
-    <PackageTags>EF Core;.NET;ASP.NET Core</PackageTags>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageTags>EF Core;.NET;ASP.NET Core;.ORG Projects</PackageTags>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Include="Resources\ep-finder-logo.ico" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\LICENSE.txt">
@@ -45,6 +39,12 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>DotOrgProjects.EntityPlatform.Finder.Tests</_Parameter1>
+    </AssemblyAttribute>
   </ItemGroup>
 
 </Project>

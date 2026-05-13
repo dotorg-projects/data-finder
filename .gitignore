@@ -10,3 +10,13 @@ obj/
 # NuGet
 packages/
 *.nupkg
+*.snupkg
+
+# Tests
+TestResults/
+
+# Help
+Help/
+
+# Sample
+*.db
