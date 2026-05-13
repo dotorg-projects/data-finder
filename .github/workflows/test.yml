@@ -1,14 +1,18 @@
 name: Test
 
 on:
-  push:
+  workflow_run:
+    workflows: [ "Build" ]
+    types: [ completed ]
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   test:
     runs-on: windows-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: Checkout
@@ -20,16 +24,16 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Restore
-        run: dotnet restore
+        run: dotnet restore "EP Finder Test/EP Finder Test.csproj"
 
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build "EP Finder Test/EP Finder Test.csproj" --no-restore --configuration Release
 
       - name: Install dotnet-coverage
         run: dotnet tool install -g dotnet-coverage
 
       - name: Test
-        run: dotnet test --no-build --configuration Release --collect "Code Coverage" --results-directory TestResults
+        run: dotnet test "EP Finder Test/EP Finder Test.csproj" --no-build --configuration Release --collect "Code Coverage" --results-directory TestResults
 
       - name: Convert coverage to Cobertura
         run: dotnet-coverage merge TestResults/**/*.coverage --output coverage.xml --output-format cobertura
@@ -39,5 +43,9 @@ jobs:
         with:
           filename: coverage.xml
           fail_below_min: true
-          format: text
+          format: markdown
+          output: file+console
           thresholds: '80 80'
+
+      - name: Publish coverage summary
+        run: Get-Content code-coverage-results.md | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
