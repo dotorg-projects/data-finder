@@ -33,7 +33,7 @@ jobs:
         run: dotnet tool install -g dotnet-coverage
 
       - name: Test
-        run: dotnet test "EP Finder Test/EP Finder Test.csproj" --no-build --configuration Release --collect "Code Coverage" --results-directory TestResults
+        run: dotnet test --project "EP Finder Test/EP Finder Test.csproj" --no-build --configuration Release --collect "Code Coverage" --results-directory TestResults
 
       - name: Convert coverage to Cobertura
         run: dotnet-coverage merge TestResults/**/*.coverage --output coverage.xml --output-format cobertura
