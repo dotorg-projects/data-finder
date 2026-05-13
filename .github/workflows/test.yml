@@ -1,0 +1,43 @@
+name: Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
+
+      - name: Install dotnet-coverage
+        run: dotnet tool install -g dotnet-coverage
+
+      - name: Test
+        run: dotnet test --no-build --configuration Release --collect "Code Coverage" --results-directory TestResults
+
+      - name: Convert coverage to Cobertura
+        run: dotnet-coverage merge TestResults/**/*.coverage --output coverage.xml --output-format cobertura
+
+      - name: Check coverage threshold
+        uses: irongut/CodeCoverageSummary@v1.3.0
+        with:
+          filename: coverage.xml
+          fail_below_min: true
+          format: text
+          thresholds: '80 80'
