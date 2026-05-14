@@ -4,10 +4,10 @@ $percentage = [math]::Round($lineRate * 100, 2)
 $summary = "## Code Coverage`n`n| Metric | Value |`n|---|---|`n| Line Rate | $percentage% |`n"
 if ($lineRate -lt 0.80) {
     $summary += "| Status | ❌ Below 80% threshold |`n"
-    $summary | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+    $summary | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
     Write-Host "Coverage $percentage% is below the 80% threshold"
     exit 1
 }
 $summary += "| Status | ✅ Passed |`n"
-$summary | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+$summary | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
 Write-Host "Coverage $percentage% passed the 80% threshold"
