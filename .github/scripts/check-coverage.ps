@@ -1,3 +1,6 @@
+Write-Host "Summary path: $SummaryPath"
+Write-Host "Coverage xml exists: $(Test-Path coverage.xml)"
+
 param([string]$SummaryPath)
 $ErrorActionPreference = 'Stop'
 
