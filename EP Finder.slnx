@@ -10,7 +10,7 @@
   </Folder>
   <Folder Name="/.github/workflows/">
     <File Path=".github/workflows/build.yml" />
-    <File Path=".github/workflows/docs.yml" />
+    <File Path=".github/workflows/help.yml" />
     <File Path=".github/workflows/test.yml" />
   </Folder>
   <Folder Name="/.github/scripts/">

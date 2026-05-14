@@ -47,8 +47,7 @@
       <Argument Key="AlwaysShowTopLevelAutoOutline" Value="False" />
     </TransformComponentArguments>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\EP Finder\bin\Debug\net8.0\DotOrgProjects.EntityPlatform.Finder.dll" xmlns="" />
-      <DocumentationSource sourceFile="..\EP Finder\bin\Debug\net8.0\DotOrgProjects.EntityPlatform.Finder.xml" xmlns="" />
+      <DocumentationSource sourceFile="..\EP Finder\EP Finder.csproj" />
     </DocumentationSources>
     <HelpFileFormat>Website</HelpFileFormat>
     <SyntaxFilters>C#</SyntaxFilters>
