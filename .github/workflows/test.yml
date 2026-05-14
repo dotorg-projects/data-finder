@@ -36,13 +36,5 @@ jobs:
         run: dotnet test --project "EP Finder Test/EP Finder Test.csproj" --no-build --configuration Release --coverage --coverage-output coverage.xml --coverage-output-format cobertura
 
       - name: Check coverage threshold
-        uses: irongut/CodeCoverageSummary@v1.3.0
-        with:
-          filename: coverage.xml
-          fail_below_min: true
-          format: markdown
-          output: file+console
-          thresholds: '80 80'
-
-      - name: Publish coverage summary
-        run: Get-Content code-coverage-results.md | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+        run: .\.github\scripts\check-coverage.ps
+        shell: pwsh
