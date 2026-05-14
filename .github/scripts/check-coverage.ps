@@ -1,3 +1,5 @@
+$ErrorActionPreference = 'Stop'
+
 $coverage = [xml](Get-Content coverage.xml)
 $lineRate = [double]$coverage.coverage.'line-rate'
 $blockRate = [double]$coverage.coverage.'branch-rate'
