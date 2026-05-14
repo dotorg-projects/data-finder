@@ -1,8 +1,5 @@
 $ErrorActionPreference = 'Stop'
 
-Write-Host "Summary path: $env:GITHUB_STEP_SUMMARY"
-Write-Host "Coverage xml exists: $(Test-Path $env:COVERAGE_FILE)"
-
 $coverage = [xml](Get-Content $env:COVERAGE_FILE)
 $lineRate = [double]$coverage.coverage.'line-rate'
 $blockRate = [double]$coverage.coverage.'branch-rate'
