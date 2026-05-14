@@ -40,8 +40,8 @@ jobs:
       - name: Build
         run: dotnet build "EP Finder/EP Finder.csproj" --no-restore --configuration Release
 
-      - name: Install Sandcastle Help File Builder
-        run: choco install sandcastle-help-file-builder -y
+      - name: Install Sandcastle Help
+        run: choco install sandcastle -y
 
       - name: Help
         run: msbuild "EP Finder Help/EP Finder Help.shfbproj" /p:Configuration=Release
