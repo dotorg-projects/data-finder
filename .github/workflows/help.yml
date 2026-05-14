@@ -1,7 +1,9 @@
-name: Documentation
+name: Help
 
 on:
-  push:
+  workflow_run:
+    workflows: [ "Test" ]
+    types: [ completed ]
     branches: [ main ]
 
 permissions:
@@ -9,9 +11,13 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   docs:
     runs-on: windows-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -25,16 +31,19 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
       - name: Restore
-        run: dotnet restore
+        run: dotnet restore "EP Finder/EP Finder.csproj"
 
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build "EP Finder/EP Finder.csproj" --no-restore --configuration Release
 
       - name: Install Sandcastle Help File Builder
         run: choco install sandcastle-help-file-builder -y
 
-      - name: Build Documentation
+      - name: Help
         run: msbuild "EP Finder Help/EP Finder Help.shfbproj" /p:Configuration=Release
 
       - name: Upload Pages Artifact
