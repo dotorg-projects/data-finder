@@ -36,7 +36,7 @@ jobs:
         run: dotnet test --project "EP Finder Test/EP Finder Test.csproj" --no-build --configuration Release --coverage --coverage-output coverage.xml --coverage-output-format cobertura
 
       - name: Check coverage threshold
-        run: .\.github\scripts\check-coverage.ps
+        run: .\.github\scripts\check-coverage.ps >> coverage-report.md
         shell: pwsh
 
       - name: Publish coverage summary

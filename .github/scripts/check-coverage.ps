@@ -6,22 +6,18 @@ $blockRate = [double]$coverage.coverage.'branch-rate'
 $linePercentage = [math]::Round($lineRate * 100, 2)
 $blockPercentage = [math]::Round($blockRate * 100, 2)
 
-$report = @"
-## Code Coverage
-
-| Metric | Value |
-|---|---|
-| Blocks | $blockPercentage% |
-| Lines | $linePercentage% |
-"@
+Write-Output "## Code Coverage"
+Write-Output ""
+Write-Output "| Metric | Value |"
+Write-Output "|---|---|"
+Write-Output "| Blocks | $blockPercentage% |"
+Write-Output "| Lines | $linePercentage% |"
 
 if ($lineRate -lt 0.80 -or $blockRate -lt 0.80) {
-    $report += "| Status | ❌ Below 80% threshold |`n"
-    $report | Out-File -FilePath coverage-report.md -Encoding utf8
+    Write-Output "| Status | ❌ Below 80% threshold |"
     Write-Host "Coverage is below the 80% threshold"
     exit 1
 }
 
-$report += "| Status | ✅ Passed |`n"
-$report | Out-File -FilePath coverage-report.md -Encoding utf8
+Write-Output "| Status | ✅ Passed |"
 Write-Host "Coverage passed the 80% threshold"
