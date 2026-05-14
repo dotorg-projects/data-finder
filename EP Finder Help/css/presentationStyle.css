@@ -917,3 +917,43 @@ span.hljs-built_in {
     #ThemeToggle:hover {
         background: rgba(255,255,255,0.25);
     }
+
+/* ===============================================================================================================
+   Bulma overrides — dark mode: strong element
+   Bulma hardcodes strong { color: #363636 } which is illegible on dark backgrounds.
+   Applies to: "Entity Platform (EP)" chip text, "Other Resources" label, and any
+   other bold inline text rendered by Bulma's generic.sass.
+   =============================================================================================================== */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) strong {
+        color: var(--color-text) !important;
+    }
+}
+
+[data-theme="dark"] strong {
+    color: var(--color-text) !important;
+}
+
+/* Restore menu-label strong — must remain at its own color in all modes */
+.menu-label strong {
+    color: var(--color-menu-label) !important;
+}
+
+/* ===============================================================================================================
+   Bulma overrides — dark mode: blockquote (Note box)
+   Bulma hardcodes blockquote { background-color: whitesmoke; border-left: 5px solid #dbdbdb }
+   via content.sass, producing a light box with invisible text in dark mode.
+   =============================================================================================================== */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .content blockquote {
+        background-color: var(--color-surface) !important;
+        border-left-color: var(--color-border) !important;
+        color: var(--color-text) !important;
+    }
+}
+
+[data-theme="dark"] .content blockquote {
+    background-color: var(--color-surface) !important;
+    border-left-color: var(--color-border) !important;
+    color: var(--color-text) !important;
+}

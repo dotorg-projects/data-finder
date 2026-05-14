@@ -31,21 +31,24 @@ namespace MyApp {
             ServiceCollection services = new ServiceCollection();
 
             services.AddDbContext<DbFoundContext>(options => {
-                options.UseSqlServer("Server=localhost;Database=MyDb;");
+                options.UseSqlServer(DbSettings.GetDataSource());
                 options.UseFinderIn("MyApp.Assembly", "MyApp.Entities.Root.Namespace");
             });
 
             ServiceProvider provider = services.BuildServiceProvider();
 
-            DbContext context = provider.GetRequiredService<DbFoundContext>();
+            DbFoundContext context = provider.GetRequiredService<DbFoundContext>();
+
+            context.Database.EnsureCreated();
 
             List<Product> products = context.Set<Product>().ToList();
+
         }
     }
 }
 ```
 
-The developer always works with `Microsoft.EntityFrameworkCore.DbContext` — the internal classes of EP Finder are never referenced directly.
+The developer always works with `DotOrgProjects.EntityPlatform.Finder.DbFoundContext` — the internal classes of EP Finder are never referenced directly.
 
 ## See Also
 
