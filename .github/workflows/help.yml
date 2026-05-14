@@ -34,16 +34,16 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
-      - name: Restore
+      - name: Restore EP Finder
         run: dotnet restore "EP Finder/EP Finder.csproj"
 
-      - name: Build
+      - name: Build EP Finder
         run: dotnet build "EP Finder/EP Finder.csproj" --no-restore --configuration Release
 
-      - name: Install Sandcastle Help
-        run: choco install sandcastle -y
+      - name: Restore EP Finder Help
+        run: msbuild "EP Finder Help/EP Finder Help.shfbproj" /t:restore
 
-      - name: Help
+      - name: Build EP Finder Help
         run: msbuild "EP Finder Help/EP Finder Help.shfbproj" /p:Configuration=Release
 
       - name: Upload Pages Artifact

@@ -109,6 +109,10 @@ For questions or feedback, contact us at &amp;lt%3ba href=&amp;quot%3bmailto:dot
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="EWSoftware.SHFB" Version="2025.12.18" />
+    <PackageReference Include="EWSoftware.SHFB.NET" Version="10.0.0" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Content" />
     <Folder Include="Content\VersionHistory" />
     <Folder Include="icons" />
