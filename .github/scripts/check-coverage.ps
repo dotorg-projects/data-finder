@@ -1,3 +1,4 @@
+param([string]$SummaryPath)
 $ErrorActionPreference = 'Stop'
 
 $coverage = [xml](Get-Content coverage.xml)
@@ -7,12 +8,12 @@ $linePercentage = [math]::Round($lineRate * 100, 2)
 $blockPercentage = [math]::Round($blockRate * 100, 2)
 $status = if ($lineRate -lt 0.80 -or $blockRate -lt 0.80) { "❌ Below 80% threshold" } else { "✅ Passed" }
 
-Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "## Code Coverage"
-Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value ""
-Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "| Metric | Value |"
-Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "|---|---|"
-Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "| Blocks | $blockPercentage% |"
-Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "| Lines | $linePercentage% |"
-Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "| Status | $status |"
+Add-Content -Path $SummaryPath -Value "## Code Coverage"
+Add-Content -Path $SummaryPath -Value ""
+Add-Content -Path $SummaryPath -Value "| Metric | Value |"
+Add-Content -Path $SummaryPath -Value "|---|---|"
+Add-Content -Path $SummaryPath -Value "| Blocks | $blockPercentage% |"
+Add-Content -Path $SummaryPath -Value "| Lines | $linePercentage% |"
+Add-Content -Path $SummaryPath -Value "| Status | $status |"
 
 if ($lineRate -lt 0.80 -or $blockRate -lt 0.80) { exit 1 }
