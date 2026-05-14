@@ -8,6 +8,7 @@ on:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  COVERAGE_FILE: ${{ github.workspace }}\coverage.xml
 
 jobs:
   test:
@@ -33,7 +34,7 @@ jobs:
         run: dotnet tool install -g dotnet-coverage
 
       - name: Test
-        run: dotnet test --project "EP Finder Test/EP Finder Test.csproj" --no-build --configuration Release --coverage --coverage-output coverage.xml --coverage-output-format cobertura
+        run: dotnet test --project "EP Finder Test/EP Finder Test.csproj" --no-build --configuration Release --coverage --coverage-output ${{ env.COVERAGE_FILE }} --coverage-output-format cobertura
 
       - name: Check coverage threshold
         shell: pwsh
