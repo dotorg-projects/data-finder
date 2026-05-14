@@ -37,4 +37,4 @@ jobs:
 
       - name: Check coverage threshold
         shell: pwsh
-        run: .\.github\scripts\check-coverage.ps -SummaryPath $env:GITHUB_STEP_SUMMARY
+        run: .\.github\scripts\check-coverage.ps
