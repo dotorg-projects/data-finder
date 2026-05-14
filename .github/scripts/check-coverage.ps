@@ -4,18 +4,22 @@ $blockRate = [double]$coverage.coverage.'branch-rate'
 $linePercentage = [math]::Round($lineRate * 100, 2)
 $blockPercentage = [math]::Round($blockRate * 100, 2)
 
-Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "## Code Coverage"
-Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value ""
-Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "| Metric | Value |"
-Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "|---|---|"
-Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "| Blocks | $blockPercentage% |"
-Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "| Lines | $linePercentage% |"
+$report = @"
+## Code Coverage
+
+| Metric | Value |
+|---|---|
+| Blocks | $blockPercentage% |
+| Lines | $linePercentage% |
+"@
 
 if ($lineRate -lt 0.80 -or $blockRate -lt 0.80) {
-    Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "| Status | ❌ Below 80% threshold |"
+    $report += "| Status | ❌ Below 80% threshold |`n"
+    $report | Out-File -FilePath coverage-report.md -Encoding utf8
     Write-Host "Coverage is below the 80% threshold"
     exit 1
 }
 
-Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "| Status | ✅ Passed |"
+$report += "| Status | ✅ Passed |`n"
+$report | Out-File -FilePath coverage-report.md -Encoding utf8
 Write-Host "Coverage passed the 80% threshold"

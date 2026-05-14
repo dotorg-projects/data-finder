@@ -38,3 +38,7 @@ jobs:
       - name: Check coverage threshold
         run: .\.github\scripts\check-coverage.ps
         shell: pwsh
+
+      - name: Publish coverage summary
+        shell: pwsh
+        run: Get-Content coverage-report.md >> $env:GITHUB_STEP_SUMMARY
