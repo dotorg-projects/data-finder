@@ -1,10 +1,9 @@
 name: Publish
 
 on:
-  workflow_run:
-    workflows: [ "Help" ]
-    types: [ completed ]
+  push:
     branches: [ main ]
+    tags: [ 'v*' ]
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -30,4 +29,7 @@ jobs:
         run: dotnet build "EP Finder/EP Finder.csproj" --no-restore --configuration Release
 
       - name: Publish
-        run: dotnet nuget push "EP Finder/bin/Release/*.nupkg" --api-key ${{ secrets.NUGET_ORG_EP_KEY }} --source ${{ vars.NUGET_ORG_EP_URL }}
+        shell: pwsh
+        run: |
+          $nupkg = Get-ChildItem "EP Finder/bin/Release/*.nupkg" | Select-Object -First 1
+          dotnet nuget push $nupkg.FullName --api-key ${{ secrets.NUGET_ORG_EP_KEY }} --source ${{ vars.NUGET_ORG_EP_URL }}
