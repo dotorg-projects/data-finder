@@ -2,7 +2,6 @@ name: Publish
 
 on:
   push:
-    branches: [ main ]
     tags: [ 'v*' ]
 
 env:
@@ -31,4 +30,4 @@ jobs:
         shell: pwsh
         run: |
           $nupkg = Get-ChildItem "EP Finder/bin/Release/*.nupkg" | Select-Object -First 1
-          dotnet nuget push $nupkg.FullName --api-key ${{ secrets.NUGET_ORG_EP_KEY }} --source ${{ vars.NUGET_ORG_EP_URL }}
+          dotnet nuget push $nupkg.FullName --api-key ${{ secrets.NUGET_ORG_EP_KEY }} --source ${{ vars.NUGET_API }}
