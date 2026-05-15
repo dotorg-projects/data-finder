@@ -7,6 +7,11 @@ EP Finder scans an assembly and root namespace looking for classes annotated wit
 > **Note:** EP Finder only works with entities configured via Data Attributes. Fluent API is not supported and there are no plans to support it.
 
 ---
+## Help
+
+Full Help is available at [EP Finder Help](https://dotorg-projects.github.io/ep-finder/).
+
+---
 
 ## Installation
 
@@ -29,21 +34,24 @@ namespace MyApp {
             ServiceCollection services = new ServiceCollection();
 
             services.AddDbContext<DbFoundContext>(options => {
-                options.UseSqlServer("Server=localhost;Database=MyDb;");
+                options.UseSqlServer(DbSettings.GetDataSource());
                 options.UseFinderIn("MyApp.Assembly", "MyApp.Entities.Root.Namespace");
             });
 
             ServiceProvider provider = services.BuildServiceProvider();
 
-            DbContext context = provider.GetRequiredService<DbFoundContext>();
+            DbFoundContext context = provider.GetRequiredService<DbFoundContext>();
+
+            context.Database.EnsureCreated();
 
             List<Product> products = context.Set<Product>().ToList();
+
         }
     }
 }
 ```
 
-The developer always works with `Microsoft.EntityFrameworkCore.DbContext` — the internal classes of EP Finder are never referenced directly.
+The developer uses `DbFoundContext` from EP Finder to register the context — the rest of the internal classes are never referenced directly.
 
 ---
 

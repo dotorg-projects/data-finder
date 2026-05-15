@@ -48,7 +48,7 @@ namespace MyApp {
 }
 ```
 
-The developer always works with `DotOrgProjects.EntityPlatform.Finder.DbFoundContext` — the internal classes of EP Finder are never referenced directly.
+The developer uses `DbFoundContext` from EP Finder to register the context — the rest of the internal classes are never referenced directly.
 
 ## See Also
 
