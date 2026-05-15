@@ -4,7 +4,7 @@ on:
   workflow_run:
     workflows: [ "Build" ]
     types: [ completed ]
-    branches: [ main, develop, testing, releases/** ]
+    branches: [ main, develop, testing, release/** ]
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
