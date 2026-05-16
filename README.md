@@ -9,7 +9,7 @@ EP Finder scans an assembly and root namespace looking for classes annotated wit
 ---
 ## Help
 
-Full Help is available at [EP Finder Help](https://dotorg-projects.github.io/ep-finder/).
+Full Help is available at [EP Finder Help](https://dotorg-projects.github.io/data-finder/).
 
 ---
 

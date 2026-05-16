@@ -1,11 +1,12 @@
 <Project>
 
   <PropertyGroup>
+    <Version>1.0.1</Version>
     <Authors>.ORG Projects</Authors>
     <Copyright>.ORG Projects</Copyright>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/dotorg-projects/ep-finder</RepositoryUrl>
+    <RepositoryUrl>https://github.com/dotorg-projects/data-finder</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

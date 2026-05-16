@@ -59,16 +59,16 @@
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <HelpTitle>Entity Platform: Finder</HelpTitle>
-    <HelpFileVersion>1.0.0</HelpFileVersion>
+    <HelpFileVersion>%24%28Version%29</HelpFileVersion>
     <NamingMethod>Guid</NamingMethod>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <RootNamespaceContainer>True</RootNamespaceContainer>
     <NamespaceGrouping>True</NamespaceGrouping>
     <MaximumGroupParts>2</MaximumGroupParts>
     <Preliminary>False</Preliminary>
-    <CopyrightText>Copyright &amp;#169%3b .ORG Projects, Licensed under Ms-PL</CopyrightText>
+    <CopyrightText>Copyright &amp;#169%3b .ORG Projects. All rights reserved.</CopyrightText>
     <FeedbackEMailAddress>dotorg-projects%40groups.outlook.com</FeedbackEMailAddress>
-    <FeedbackEMailLinkText>Contact .ORG Projects</FeedbackEMailLinkText>
+    <FeedbackEMailLinkText>.ORG Projects</FeedbackEMailLinkText>
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <ProjectSummary>EP Finder is an open-source module of the &amp;lt%3bb&amp;gt%3bEntity Platform %28EP%29&amp;lt%3b/b&amp;gt%3b division under &amp;lt%3bb&amp;gt%3b.ORG Projects&amp;lt%3b/b&amp;gt%3b, designed to eliminate the need to declare a &amp;lt%3bc&amp;gt%3bDbContext&amp;lt%3b/c&amp;gt%3b and its &amp;lt%3bc&amp;gt%3bDbSet&amp;amp%3blt%3bT&amp;amp%3bgt%3b&amp;lt%3b/c&amp;gt%3b properties manually in Entity Framework Core applications.&amp;lt%3bbr/&amp;gt%3b&amp;lt%3bbr/&amp;gt%3b
 For questions or feedback, contact us at &amp;lt%3ba href=&amp;quot%3bmailto:dotorg-projects%40groups.outlook.com&amp;quot%3b&amp;gt%3b.ORG Projects Group&amp;lt%3b/a&amp;gt%3b.</ProjectSummary>
@@ -88,6 +88,8 @@ For questions or feedback, contact us at &amp;lt%3ba href=&amp;quot%3bmailto:dot
     </PlugInConfigurations>
     <VisibleItems>Attributes, ExplicitInterfaceImplementations, InheritedMembers, InheritedFrameworkMembers, InheritedFrameworkInternalMembers, InheritedFrameworkPrivateMembers, Internals, Privates, PrivateFields, Protected, SealedProtected, NoPIATypes, PublicCompilerGenerated, EditorBrowsableNever, NonBrowsable, InternalAndPrivateIfExternal</VisibleItems>
     <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+    <CopyrightHref>
+    </CopyrightHref>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
@@ -121,6 +123,7 @@ For questions or feedback, contact us at &amp;lt%3ba href=&amp;quot%3bmailto:dot
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\VersionHistory\v1.0.0.md" />
+    <None Include="Content\VersionHistory\v1.0.1.md" />
     <None Include="Content\VersionHistory\VersionHistory.md" />
     <None Include="Content\Welcome.md" />
   </ItemGroup>
