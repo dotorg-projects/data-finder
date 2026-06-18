@@ -1,0 +1,91 @@
+name: SonarQube Cloud
+
+on:
+  push:
+    branches:
+      - main
+      - release/**
+  pull_request:
+    branches:
+      - main
+      - release/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: sonarcloud-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sonarcloud:
+    name: Analyze
+    runs-on: windows-latest
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_ORGANIZATION: dotorg-projects
+      SONAR_PROJECT_KEY: dotorg-projects_data-finder
+
+    steps:
+      - name: Checkout
+        if: env.SONAR_TOKEN != ''
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        if: env.SONAR_TOKEN != ''
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Setup Java
+        if: env.SONAR_TOKEN != ''
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Install SonarScanner for .NET
+        if: env.SONAR_TOKEN != ''
+        shell: pwsh
+        run: |
+          dotnet tool install --global dotnet-sonarscanner
+          dotnet tool install --global dotnet-coverage
+
+      - name: Begin analysis
+        if: env.SONAR_TOKEN != ''
+        shell: pwsh
+        run: >
+          dotnet sonarscanner begin
+          /k:"${{ env.SONAR_PROJECT_KEY }}"
+          /o:"${{ env.SONAR_ORGANIZATION }}"
+          /d:sonar.token="${{ env.SONAR_TOKEN }}"
+          /d:sonar.host.url="https://sonarcloud.io"
+          /d:sonar.cs.vscoveragexml.reportsPaths="${{ github.workspace }}\coverage.xml"
+
+      - name: Build
+        if: env.SONAR_TOKEN != ''
+        shell: pwsh
+        run: dotnet build "EP Finder Test/EP Finder Test.csproj" --configuration Release
+
+      - name: Test with coverage
+        if: env.SONAR_TOKEN != ''
+        shell: pwsh
+        run: |
+          dotnet-coverage collect `
+            "dotnet test --project `"EP Finder Test/EP Finder Test.csproj`" --no-build --configuration Release" `
+            --output "${{ github.workspace }}\coverage.xml" `
+            --output-format xml
+
+      - name: End analysis
+        if: env.SONAR_TOKEN != ''
+        shell: pwsh
+        run: dotnet sonarscanner end /d:sonar.token="${{ env.SONAR_TOKEN }}"
+
+      - name: Skip analysis
+        if: env.SONAR_TOKEN == ''
+        shell: pwsh
+        run: Write-Host "SONAR_TOKEN is not configured; skipping SonarQube Cloud analysis."

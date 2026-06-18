@@ -1,0 +1,48 @@
+name: Snyk
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "18 5 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: snyk-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  snyk:
+    name: Dependency scan
+    runs-on: ubuntu-latest
+    env:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+    steps:
+      - name: Checkout
+        if: env.SNYK_TOKEN != ''
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        if: env.SNYK_TOKEN != ''
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore
+        if: env.SNYK_TOKEN != ''
+        run: dotnet restore "EP Finder Test/EP Finder Test.csproj"
+
+      - name: Run Snyk
+        if: env.SNYK_TOKEN != ''
+        uses: snyk/actions/dotnet@master
+        env:
+          SNYK_TOKEN: ${{ env.SNYK_TOKEN }}
+        with:
+          command: test
+          args: --severity-threshold=medium
+
+      - name: Skip scan
+        if: env.SNYK_TOKEN == ''
+        run: echo "SNYK_TOKEN is not configured; skipping Snyk scan."

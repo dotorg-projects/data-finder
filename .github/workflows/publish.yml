@@ -4,8 +4,15 @@ on:
   push:
     tags: [ 'v*' ]
 
+permissions:
+  contents: read
+
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: publish-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   publish:
@@ -25,6 +32,16 @@ jobs:
 
       - name: Build
         run: dotnet build "EP Finder/EP Finder.csproj" --no-restore --configuration Release
+
+      - name: Validate tag version
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}"
+          $props = [xml](Get-Content Directory.Build.props)
+          $version = ($props.Project.PropertyGroup | Where-Object { $_.Version } | Select-Object -First 1).Version
+          if ($tag -ne "v$version") {
+            throw "Tag '$tag' does not match package version 'v$version'."
+          }
 
       - name: Publish
         shell: pwsh
