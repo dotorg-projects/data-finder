@@ -28,10 +28,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 8.0.x
 
@@ -52,7 +52,7 @@ jobs:
         run: Invoke-Expression (Get-Content .\.github\scripts\check-coverage.ps -Raw)
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v7
         with:
           files: ${{ env.COVERAGE_FILE }}
           flags: dotnet
