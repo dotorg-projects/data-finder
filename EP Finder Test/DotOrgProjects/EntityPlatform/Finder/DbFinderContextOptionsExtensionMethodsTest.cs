@@ -10,6 +10,51 @@ namespace DotOrgProjects.EntityPlatform.Finder
     {
 
         [TestMethod]
+        public void UseFinderIn_WithNullOptionsBuilder_ThrowsArgumentNullException()
+        {
+            DbContextOptionsBuilder builder = null!;
+
+            Assert.ThrowsExactly<ArgumentNullException>(() =>
+                builder.UseFinderIn("MyAssembly", "MyNamespace"));
+        }
+
+        [TestMethod]
+        public void UseFinderIn_WithNullAssemblyName_ThrowsArgumentNullException()
+        {
+            DbContextOptionsBuilder builder = new DbContextOptionsBuilder();
+
+            Assert.ThrowsExactly<ArgumentNullException>(() =>
+                builder.UseFinderIn(null!, "MyNamespace"));
+        }
+
+        [TestMethod]
+        public void UseFinderIn_WithEmptyAssemblyName_ThrowsArgumentException()
+        {
+            DbContextOptionsBuilder builder = new DbContextOptionsBuilder();
+
+            Assert.ThrowsExactly<ArgumentException>(() =>
+                builder.UseFinderIn("", "MyNamespace"));
+        }
+
+        [TestMethod]
+        public void UseFinderIn_WithNullRootNamespace_ThrowsArgumentNullException()
+        {
+            DbContextOptionsBuilder builder = new DbContextOptionsBuilder();
+
+            Assert.ThrowsExactly<ArgumentNullException>(() =>
+                builder.UseFinderIn("MyAssembly", null!));
+        }
+
+        [TestMethod]
+        public void UseFinderIn_WithEmptyRootNamespace_ThrowsArgumentException()
+        {
+            DbContextOptionsBuilder builder = new DbContextOptionsBuilder();
+
+            Assert.ThrowsExactly<ArgumentException>(() =>
+                builder.UseFinderIn("MyAssembly", ""));
+        }
+
+        [TestMethod]
         public void UseFinderIn_ReturnsSameOptionsBuilder()
         {
             DbContextOptionsBuilder builder = new DbContextOptionsBuilder()
