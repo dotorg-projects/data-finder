@@ -1,0 +1,48 @@
+name: Bug report
+description: Report a reproducible problem in EP Finder
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve EP Finder. Please include enough detail for maintainers to reproduce the issue.
+  - type: input
+    id: version
+    attributes:
+      label: EP Finder version
+      description: Package version or commit SHA.
+      placeholder: "1.0.1"
+    validations:
+      required: true
+  - type: input
+    id: dotnet-version
+    attributes:
+      label: .NET version
+      placeholder: "8.0.x"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the bug and the behavior you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Provide a minimal project, code snippet, or ordered steps.
+      placeholder: |
+        1. Configure DbFoundContext with ...
+        2. Run ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or stack traces
+      render: text

@@ -1,9 +1,7 @@
 name: Help
 
 on:
-  workflow_run:
-    workflows: [ "Test" ]
-    types: [ completed ]
+  push:
     branches: [ main, release/** ]
 
 permissions:
@@ -14,10 +12,13 @@ permissions:
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
+concurrency:
+  group: help-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   help:
     runs-on: windows-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

@@ -77,7 +77,7 @@ namespace DotOrgProjects.EntityPlatform.Finder
 
             DbContextOptionsExtensionInfo info = extension.Info;
 
-            Assert.IsTrue(info.LogFragment.Contains("MyAssembly"));
+            Assert.Contains("MyAssembly", info.LogFragment);
         }
 
         [TestMethod]
@@ -88,7 +88,7 @@ namespace DotOrgProjects.EntityPlatform.Finder
 
             DbContextOptionsExtensionInfo info = extension.Info;
 
-            Assert.IsTrue(info.LogFragment.Contains("MyNamespace"));
+            Assert.Contains("MyNamespace", info.LogFragment);
         }
 
         [TestMethod]

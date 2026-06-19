@@ -1,5 +1,13 @@
 # EP Finder — Entity Platform Finder
 
+[![Build](https://github.com/dotorg-projects/data-finder/actions/workflows/build.yml/badge.svg)](https://github.com/dotorg-projects/data-finder/actions/workflows/build.yml)
+[![Test](https://github.com/dotorg-projects/data-finder/actions/workflows/test.yml/badge.svg)](https://github.com/dotorg-projects/data-finder/actions/workflows/test.yml)
+[![CodeQL](https://github.com/dotorg-projects/data-finder/actions/workflows/codeql.yml/badge.svg)](https://github.com/dotorg-projects/data-finder/actions/workflows/codeql.yml)
+[![Codecov](https://codecov.io/gh/dotorg-projects/data-finder/branch/main/graph/badge.svg)](https://codecov.io/gh/dotorg-projects/data-finder)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=dotorg-projects_data-finder&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=dotorg-projects_data-finder)
+[![NuGet](https://img.shields.io/nuget/v/DotOrgProjects.EntityPlatform.Finder.svg)](https://www.nuget.org/packages/DotOrgProjects.EntityPlatform.Finder)
+[![License: MS-PL](https://img.shields.io/badge/License-MS--PL-blue.svg)](LICENSE.txt)
+
 EP Finder is a module of the **Entity Platform (EP)** team of [.ORG Projects](https://github.com/dotorg-projects), designed to eliminate the need to manually declare `DbContext` and its `DbSet<T>` properties in applications that use Entity Framework Core.
 
 EP Finder scans an assembly and root namespace looking for classes annotated with the `[Table]` data attribute and registers them automatically in EF Core by replacing its internal `IDbSetFinder` service.
@@ -68,6 +76,22 @@ EF Core guarantees that `OnConfiguring` always runs regardless of how the `DbFou
 ## Migrations
 
 EF Core discovers `DbFoundContext` at design time through DI — when running the app startup it finds `DbFoundContext` registered with `AddDbContext<DbFoundContext>()` and uses it to generate migrations. No additional design time class is required.
+
+---
+
+## Contributing
+
+Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), and [SECURITY.md](SECURITY.md) before opening issues or pull requests.
+
+### Local validation
+
+```bash
+dotnet restore
+dotnet build "EP Finder/EP Finder.csproj" --configuration Release
+dotnet test --project "EP Finder Test/EP Finder Test.csproj" --configuration Release --coverage
+dotnet format "EP Finder/EP Finder.csproj" --verify-no-changes
+dotnet format "EP Finder Test/EP Finder Test.csproj" --verify-no-changes
+```
 
 ---
 

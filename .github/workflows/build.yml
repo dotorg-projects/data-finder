@@ -2,16 +2,34 @@ name: Build
 
 on:
   push:
-    branches: [ '**' ]
+    branches:
+      - main
+      - release/**
   pull_request:
-    branches: [ '**' ]
+    branches:
+      - main
+      - release/**
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build:
-    runs-on: windows-latest
+    name: Build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
 
     steps:
       - name: Checkout
@@ -23,7 +41,30 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Restore
-        run: dotnet restore
+        run: dotnet restore "EP Finder/EP Finder.csproj"
 
       - name: Build
         run: dotnet build "EP Finder/EP Finder.csproj" --no-restore --configuration Release
+
+  format:
+    name: Format
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore
+        run: |
+          dotnet restore "EP Finder/EP Finder.csproj"
+          dotnet restore "EP Finder Test/EP Finder Test.csproj"
+
+      - name: Verify formatting
+        run: |
+          dotnet format "EP Finder/EP Finder.csproj" --verify-no-changes --verbosity diagnostic
+          dotnet format "EP Finder Test/EP Finder Test.csproj" --verify-no-changes --verbosity diagnostic

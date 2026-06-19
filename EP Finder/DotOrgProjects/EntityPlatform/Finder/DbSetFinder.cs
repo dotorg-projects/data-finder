@@ -1,9 +1,9 @@
 ﻿// Copyright (c) 2025 .ORG Projects. All rights reserved.
 // Licensed under the Microsoft Public License (Ms-PL).
 // See LICENSE.txt in the project root for license information.
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace DotOrgProjects.EntityPlatform.Finder
 {

@@ -37,6 +37,10 @@ namespace DotOrgProjects.EntityPlatform.Finder
         )
         {
 
+            ArgumentNullException.ThrowIfNull(optionsBuilder);
+            ArgumentException.ThrowIfNullOrEmpty(assemblyName);
+            ArgumentException.ThrowIfNullOrEmpty(rootNamespace);
+
             ((IDbContextOptionsBuilderInfrastructure)optionsBuilder).AddOrUpdateExtension(
                 new DbFinderContextOptionsExtension().WithFinderIn(assemblyName, rootNamespace));
 
