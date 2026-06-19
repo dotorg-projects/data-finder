@@ -13,6 +13,7 @@ indent_style = space
 indent_size = 2
 
 [*.cs]
+end_of_line = lf
 indent_style = space
 indent_size = 4
 
@@ -47,5 +48,5 @@ dotnet_diagnostic.CA1716.severity = none
 dotnet_diagnostic.CA1812.severity = none
 dotnet_diagnostic.CA1822.severity = suggestion
 dotnet_diagnostic.CA1848.severity = suggestion
-dotnet_diagnostic.IDE0005.severity = warning
+dotnet_diagnostic.IDE0005.severity = suggestion
 dotnet_diagnostic.IDE0055.severity = warning
